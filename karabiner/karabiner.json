@@ -1,0 +1,83 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "App Nav",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f7" },
+                                "to": [{ "shell_command": "open -a 'Firefox'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "f8" },
+                                "to": [{ "shell_command": "open -a 'Wezterm'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "f9" },
+                                "to": [{ "shell_command": "open -a 'Cursor'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "f10" },
+                                "to": [{ "shell_command": "open -a 'Microsoft Teams'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Primary",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        },
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "App Nav",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "page_down",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "apple_vendor_keyboard_key_code": "mission_control",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Secondary",
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
