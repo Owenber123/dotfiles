@@ -19,3 +19,14 @@ map("i", "<C-k>", function() require("copilot.suggestion").dismiss() end, { desc
 
 -- Show Copilot panel
 map("n", "<leader>cp", "<cmd>Copilot panel<CR>", { desc = "Open Copilot panel" })
+
+
+-- Better window navigation in terminal mode
+local opts = { noremap = true, silent = true }
+
+-- Terminal Mode mappings
+vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]], opts)
+vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], opts)
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], opts)
+vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]], opts)
+
