@@ -14,7 +14,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.background = {
 	{
 		source = {
-		  File = "/Users/owenberinger/Pictures/Background/triangles-neon-colors-8k-jx-3440x1440.jpg.png",
+			File = "/Users/owenberinger/Pictures/Background/triangles-neon-colors-8k-jx-3440x1440.jpg.png",
 		},
 		hsb = {
 			hue = 1.0,
@@ -26,21 +26,20 @@ config.background = {
 	},
 	{
 		source = {
-      Color = "#222222",
+			Color = "#222222",
 		},
 		width = "100%",
 		height = "100%",
 		opacity = 0.8,
-    -- opacity = 1.0,
+		-- opacity = 1.0,
 	},
 }
 
 config.window_padding = {
-   left = 0,
-   right = 0,
-   top = 0,
-   bottom = 0,
- }
-
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
+}
 
 return config
