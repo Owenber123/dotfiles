@@ -50,3 +50,45 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+--
+
+
+-- local nvim_lsp = require('lspconfig')
+--
+-- nvim_lsp.clangd.setup {
+--     cmd = {'clangd', '--background-index'},
+--     init_options = {
+--         clangdFileStatus = true,
+--         clangdSemanticHighlighting = true
+--     },
+--     filetypes = {'c', 'cpp', 'cxx', 'cc'},
+--     root_dir = function() vim.fn.getcwd() end,
+--     settings = {
+--         ['clangd'] = {
+--             ['compilationDatabasePath'] = 'build',
+--             ['fallbackFlags'] = {'-std=c++20'}
+--         }
+--     }
+-- }
+local nvim_lsp = require("lspconfig")
+
+nvim_lsp.clangd.setup({
+    cmd = {"clangd", "--background-index", "--compile-commands-dir=build"},
+    init_options = {
+        clangdFileStatus = true,
+        clangdSemanticHighlighting = true
+    },
+    filetypes = {"c", "cpp", "cxx", "cc"},
+    root_dir = function() return vim.fn.getcwd() end,
+    settings = {
+        ["clangd"] = {
+            compilationDatabasePath = "build",
+            fallbackFlags = {
+                "-std=c++20",
+                "-I/opt/homebrew/include",           -- macOS Homebrew installs
+                "-I/opt/homebrew/opt/boost/include", -- Boost Headers
+                "-I/opt/homebrew/opt/boost/include/boost",
+            }
+        }
+    }
+})
