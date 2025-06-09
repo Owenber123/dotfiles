@@ -5,8 +5,8 @@ vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
+    local repo = "https://github.com/folke/lazy.nvim.git"
+    vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -22,29 +22,29 @@ vim.opt.number = true
 
 -- load plugins
 require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
+    {
+        "NvChad/NvChad",
+        lazy = false,
+        branch = "v2.5",
+        import = "nvchad.plugins",
+    },
 
-  { import = "plugins" },
+    { import = "plugins" },
 }, lazy_config)
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
-vim.api.nvim_set_hl(0, "TabLine",     { bg = "none", fg = "#a6adc8" })  -- inactive tabs
-vim.api.nvim_set_hl(0, "TabLineSel",  { bg = "none", fg = "#1e1e2e", bold = true })  -- selected tab
-vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })  -- background filler space
+vim.api.nvim_set_hl(0, "TabLine", { bg = "none", fg = "#a6adc8" }) -- inactive tabs
+vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none", fg = "#1e1e2e", bold = true }) -- selected tab
+vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" }) -- background filler space
 
 require("options")
 require("nvchad.autocmds")
 require("configs/lspconfig")
 
 vim.schedule(function()
-  require("mappings")
+    require("mappings")
 end)
 
 -- local autocmd = vim.api.nvim_create_autocmd
