@@ -36,10 +36,12 @@ config.background = {
 }
 
 config.window_padding = {
-	left = 0,
+	left = 5,
 	right = 0,
-	top = 0,
+	top = 10,
 	bottom = 0,
 }
+
+-- config.scrollback_lines = 10000
 
 return config
