@@ -24,7 +24,7 @@ map("n", "<leader>cp", "<cmd>Copilot panel<CR>", { desc = "Open Copilot panel" }
 -- Better window navigation in terminal mode
 local opts = { noremap = true, silent = true }
 
--- Terminal Mode mappings
+-- Terminal Mode mappings (makes nvim terminals more navigatable)
 vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]], opts)
 vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], opts)
 vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], opts)

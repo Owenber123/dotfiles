@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require("lspconfig")
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd", "ts_ls", "gopls", "lua" }
+local servers = { "html", "cssls", "clangd", "ts_ls", "gopls" }
 local nvlsp = require("nvchad.configs.lspconfig")
 
 require("lspconfig").rust_analyzer.setup({
@@ -52,43 +52,27 @@ end
 -- }
 --
 
-
--- local nvim_lsp = require('lspconfig')
---
--- nvim_lsp.clangd.setup {
---     cmd = {'clangd', '--background-index'},
---     init_options = {
---         clangdFileStatus = true,
---         clangdSemanticHighlighting = true
---     },
---     filetypes = {'c', 'cpp', 'cxx', 'cc'},
---     root_dir = function() vim.fn.getcwd() end,
---     settings = {
---         ['clangd'] = {
---             ['compilationDatabasePath'] = 'build',
---             ['fallbackFlags'] = {'-std=c++20'}
---         }
---     }
--- }
 local nvim_lsp = require("lspconfig")
 
 nvim_lsp.clangd.setup({
-    cmd = {"clangd", "--background-index", "--compile-commands-dir=build"},
+    cmd = { "clangd", "--background-index", "--compile-commands-dir=build" },
     init_options = {
         clangdFileStatus = true,
-        clangdSemanticHighlighting = true
+        clangdSemanticHighlighting = true,
     },
-    filetypes = {"c", "cpp", "cxx", "cc"},
-    root_dir = function() return vim.fn.getcwd() end,
+    filetypes = { "c", "cpp", "cxx", "cc" },
+    root_dir = function()
+        return vim.fn.getcwd()
+    end,
     settings = {
         ["clangd"] = {
             compilationDatabasePath = "build",
             fallbackFlags = {
                 "-std=c++20",
-                "-I/opt/homebrew/include",           -- macOS Homebrew installs
+                "-I/opt/homebrew/include", -- macOS Homebrew installs
                 "-I/opt/homebrew/opt/boost/include", -- Boost Headers
                 "-I/opt/homebrew/opt/boost/include/boost",
-            }
-        }
-    }
+            },
+        },
+    },
 })
