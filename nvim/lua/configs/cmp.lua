@@ -51,6 +51,7 @@ cmp.setup({
 
     -- Order of sources determines order of sourcing
     sources = cmp.config.sources({
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "treesitter" },
         { name = "buffer" },
@@ -58,8 +59,26 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "path" },
     }),
+
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
+    completion = {
+        autocomplete = false,
+    },
+
+    -- formatting = {
+    -- format = function(entry, vim_item)
+    --     if entry.source.name == "copilot" then
+    --         vim_item.kind = " [Copilot]"
+    --     end
+    --     return vim_item
+    -- end,
+    -- format = lspkind.cmp_format({
+    --     mode = "symbol",
+    --     max_width = 50,
+    --     symbol_map = { Copilot = "" },
+    -- }),
+    -- },
 })

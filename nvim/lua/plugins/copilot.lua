@@ -1,39 +1,37 @@
 return {
-  "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
-  config = function()
-    local copilot = require("copilot")
-    copilot.setup({
-      suggestion = {
-        enabled = true,
-        auto_trigger = true
-      },
-      panel = { enabled = true },
-    })
-    -- Create a toggle function
-    local copilot_status = true
-    function ToggleCopilot()
-      copilot_status = not copilot_status
-      copilot.setup({
-        suggestion = {
-          enabled = copilot_status,
-          auto_trigger = copilot_status,
-        },
-        panel = { enabled = copilot_status },
-      })
-      if copilot_status then
-        print("Copilot Enabled")
-      else
-        print("Copilot Disabled")
-      end
-    end
-
-    -- Map a keybinding to toggle Copilot
-    vim.api.nvim_set_keymap(
-      "n", -- Normal mode
-      "<leader>ct", -- Your desired keybinding (e.g., <leader>ct for "Copilot Toggle")
-      ":lua ToggleCopilot()<CR>",
-      { noremap = true, silent = true }
-    )
-  end,
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+        require("copilot").setup({
+            panel = {
+                enabled = true,
+                auto_refresh = true,
+                keymap = {
+                    jump_prev = "[[",
+                    jump_next = "]]",
+                    accept = "<CR>",
+                    refresh = "gr",
+                    open = "<C-CR>",
+                },
+                layout = {
+                    position = "bottom", -- | top | left | right
+                    ratio = 0.4,
+                },
+            },
+            suggestion = {
+                enabled = false,
+                auto_trigger = false,
+                debounce = 75,
+                keymap = {
+                    accept = "<C-]>",
+                    accept_word = "<C-Right>",
+                    accept_line = "<C-End>",
+                    next = "<M-]>",
+                    prev = "<M-[>",
+                    dismiss = "<C-[>",
+                },
+            },
+        })
+    end,
 }
