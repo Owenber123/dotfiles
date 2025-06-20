@@ -54,9 +54,6 @@ return {
         config = require("configs/cmp"),
     },
 
-    {
-        "rcarriga/nvim-notify", -- used for :lua require("notify")(...)
-    },
     -- Git decorations
     {
         "lewis6991/gitsigns.nvim",
