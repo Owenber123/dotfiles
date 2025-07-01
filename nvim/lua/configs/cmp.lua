@@ -67,18 +67,4 @@ cmp.setup({
     completion = {
         autocomplete = false,
     },
-
-    -- formatting = {
-    -- format = function(entry, vim_item)
-    --     if entry.source.name == "copilot" then
-    --         vim_item.kind = " [Copilot]"
-    --     end
-    --     return vim_item
-    -- end,
-    -- format = lspkind.cmp_format({
-    --     mode = "symbol",
-    --     max_width = 50,
-    --     symbol_map = { Copilot = "" },
-    -- }),
-    -- },
 })

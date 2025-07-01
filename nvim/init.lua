@@ -41,7 +41,9 @@ vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" }) -- background filler spac
 
 require("options")
 require("nvchad.autocmds")
+
 require("configs/lspconfig")
+vim.lsp.handlers.signature_help = function() end
 
 vim.schedule(function()
     require("mappings")
@@ -74,3 +76,6 @@ end)
 --     capabilities = capabilities,
 --   }
 -- end
+--
+
+--
