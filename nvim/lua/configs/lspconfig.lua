@@ -4,36 +4,8 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require("lspconfig")
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd", "ts_ls", "gopls" }
+local servers = { "html", "cssls", "ts_ls", "gopls", "python" }
 local nvlsp = require("nvchad.configs.lspconfig")
-
-require("lspconfig").rust_analyzer.setup({
-    settings = {
-        ["rust-analyzer"] = {
-            diagnostics = {
-                enable = false,
-            },
-        },
-    },
-})
-local on_attach = nvlsp.on_attach
-local capabilities = nvlsp.capabilities
-
-require("lspconfig").clangd.setup({
-    on_attach = function(client, bufnr)
-        client.server_capabilities.signatureHelpProvider = false
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-})
-
--- require'lspconfig'.gopls.setup {
---   on_attach = function(client, bufnr)
---     client.server_capabilities.signatureHelpProvider = false
---     on_attach(client, bufnr)
---   end,
---   capabilities = capabilities
--- }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -44,16 +16,17 @@ for _, lsp in ipairs(servers) do
     })
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
+-- require'lspconfig'.gopls.setup {
+--   on_attach = function(client, bufnr)
+--     client.server_capabilities.signatureHelpProvider = false
+--     on_attach(client, bufnr)
+--   end,
+--   capabilities = capabilities
 -- }
---
 
 local nvim_lsp = require("lspconfig")
 
+-- C++
 nvim_lsp.clangd.setup({
     cmd = { "clangd", "--background-index", "--compile-commands-dir=build" },
     init_options = {
@@ -68,11 +41,16 @@ nvim_lsp.clangd.setup({
         ["clangd"] = {
             compilationDatabasePath = "build",
             fallbackFlags = {
-                "-std=c++20",
+                "-std=c++23",
                 "-I/opt/homebrew/include", -- macOS Homebrew installs
                 "-I/opt/homebrew/opt/boost/include", -- Boost Headers
                 "-I/opt/homebrew/opt/boost/include/boost",
             },
         },
     },
+    on_attach = function(client, bufnr)
+        client.server_capabilities.signatureHelpProvider = false -- ⛔ disables signature popup
+        nvlsp.on_attach(client, bufnr) -- preserve NvChad features like formatting and keymaps
+    end,
+    capabilities = nvlsp.capabilities,
 })
