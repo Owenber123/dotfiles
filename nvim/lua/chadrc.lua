@@ -5,15 +5,16 @@
 local M = {}
 
 M.base46 = {
-  -- NVChad Theme
-  theme = "doomchad",
-  -- NVim Transparent
-  transparency = true,
-  -- Highlight Comments
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
-  },
+    -- NVChad Theme
+    theme = "doomchad",
+    -- NVim Transparent
+    transparency = true,
+    -- Highlight Comments
+    hl_override = {
+        Comment = { italic = true },
+        ["@comment"] = { italic = true },
+        -- other overrides...
+    },
 }
 
 return M
