@@ -76,9 +76,10 @@ return {
         "RRethy/vim-illuminate",
         -- config = require("vim_illuminate"),
     },
-
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = { "OXY2DEV/markview.nvim" },
+        lazy = false,
         opts = {
             ensure_installed = {
                 "vim",
@@ -96,23 +97,20 @@ return {
                 "python",
                 "ruby",
                 "rust",
+                "zig",
                 "sql",
                 "typescript",
                 "yaml",
-                -- "html",
-                -- "css",
-                -- "bash",
-                -- "html",
-                -- "javascript",
-                -- "json",
-                -- "markdown",
-                -- "markdown_inline",
-                -- "python",
+                "bash",
+                "json",
+                "markdown",
+                "markdown_inline",
+                "latex",
+                "typst",
                 -- "query",
                 -- "regex",
                 -- "tsx",
-                -- "typescript",
-                -- "yaml",
+                "yaml",
             },
         },
     },
@@ -137,5 +135,14 @@ return {
             "rcarriga/nvim-notify",
         },
         -- conf = require("configs/noice")
+    },
+    -- Zig Language Server
+    {
+        "ziglang/zig.vim",
+        ft = "zig",
+        config = function()
+            -- Configure zls if needed (check zls documentation for specific options)
+            -- Example: vim.g.zig_lamp_zls_auto_install = true
+        end,
     },
 }
