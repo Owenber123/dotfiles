@@ -39,6 +39,28 @@ vim.api.nvim_set_hl(0, "TabLine", { bg = "none", fg = "#a6adc8" }) -- inactive t
 vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none", fg = "#1e1e2e", bold = true }) -- selected tab
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" }) -- background filler space
 
+local colors = dofile(vim.g.base46_cache .. "colors")
+-- Define custom highlight groups for each markdown heading level
+vim.api.nvim_set_hl(0, "@markdown.heading.1", { fg = colors.teal, bold = true })
+vim.api.nvim_set_hl(0, "@markdown.heading.2", { fg = colors.vibrant_green, bold = true })
+vim.api.nvim_set_hl(0, "@markdown.heading.3", { fg = colors.orange, bold = true })
+vim.api.nvim_set_hl(0, "@markdown.heading.4", { fg = colors.red, bold = true })
+vim.api.nvim_set_hl(0, "@markdown.heading.5", { fg = colors.purple, bold = true })
+vim.api.nvim_set_hl(0, "@markdown.heading.6", { fg = colors.pink, bold = true })
+
+-- Link the custom highlight groups to Treesitter's markdown heading captures
+vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { link = "@markdown.heading.1" })
+vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { link = "@markdown.heading.2" })
+vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { link = "@markdown.heading.3" })
+vim.api.nvim_set_hl(0, "@markup.heading.4.markdown", { link = "@markdown.heading.4" })
+vim.api.nvim_set_hl(0, "@markup.heading.5.markdown", { link = "@markdown.heading.5" })
+vim.api.nvim_set_hl(0, "@markup.heading.6.markdown", { link = "@markdown.heading.6" })
+
+-- vim.api.nvim_set_hl(0, "@text.markdown", { fg = colors.purple }) -- or any color from your palette
+-- vim.api.nvim_set_hl(0, "@markup", { fg = colors.purple }) -- global markup
+-- vim.api.nvim_set_hl(0, "@markup.inline.markdown", { fg = colors.purple }) -- markdown-specific
+vim.api.nvim_set_hl(0, "@spell", { fg = colors.purple })
+
 require("options")
 require("nvchad.autocmds")
 
