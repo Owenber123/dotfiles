@@ -59,7 +59,7 @@ vim.api.nvim_set_hl(0, "@markup.heading.6.markdown", { link = "@markdown.heading
 -- vim.api.nvim_set_hl(0, "@text.markdown", { fg = colors.purple }) -- or any color from your palette
 -- vim.api.nvim_set_hl(0, "@markup", { fg = colors.purple }) -- global markup
 -- vim.api.nvim_set_hl(0, "@markup.inline.markdown", { fg = colors.purple }) -- markdown-specific
-vim.api.nvim_set_hl(0, "@spell", { fg = colors.purple })
+-- vim.api.nvim_set_hl(0, "@spell", { fg = colors.purple })
 
 require("options")
 require("nvchad.autocmds")
